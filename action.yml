@@ -1,0 +1,18 @@
+name: 'Cargo Verison'
+description: 'Bump a package version'
+inputs:
+  version:
+    description: 'New version'
+    required: true
+    default: 'patch'
+  message:
+    description: 'Commit message'
+    required: false
+    default: '%'
+  git-tag-version:
+    description: 'Tag the commit. Setting this to false results in no commit being made at all'
+    required: false
+    default: 'true'
+runs:
+  using: 'node20'
+  main: 'index.js'
