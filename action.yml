@@ -13,6 +13,9 @@ inputs:
     description: 'Tag the commit. Setting this to false results in no commit being made at all'
     required: false
     default: 'true'
+outputs:
+  new_version:
+    description: 'The new version after the bump'
 runs:
   using: 'node20'
   main: 'dist/index.js'
