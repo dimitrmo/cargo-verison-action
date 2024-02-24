@@ -1,6 +1,6 @@
-const core = require('@actions/core');
-const exec = require('@actions/exec');
-const chalk = require('chalk');
+import chalk from 'chalk';
+import core from '@actions/core';
+import exec from '@actions/exec';
 
 async function run() {
   try {
@@ -18,11 +18,11 @@ async function run() {
     console.log(chalk.blue(`Message: ${message}`));
 
     // git-tag-version
-    const git_tag_version = core.getInput('git-tag-version');
+    const git_tag_version = core.getBooleanInput('git-tag-version');
     console.log(chalk.blue(`Git tag version: ${git_tag_version}`));
 
     let params = [ version, "-m", message ];
-    if (git_tag_version === 'false' || git_tag_version === false) {
+    if (!git_tag_version) {
       params.push('--git-tag-version=false');
     }
   
