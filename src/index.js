@@ -26,7 +26,7 @@ async function run() {
       params.push('--git-tag-version=false');
     }
   
-    const output = await exec.getExecOutput('cargo-verison', params, { silent: true })
+    const output = await exec.getExecOutput('cargo-verison', params)
     const new_version = output.stdout.trim();
     core.setOutput("next_version", new_version);
 
