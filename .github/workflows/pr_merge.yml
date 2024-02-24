@@ -33,7 +33,6 @@ jobs:
         run: |
           npm install
           npm run build
-          npm pack
 
       - name: NPM test
         run: |
@@ -45,7 +44,7 @@ jobs:
           GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
           echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
 
-      - name: NPM publish
+      - name: Release
         run: |
           echo "Current branch $GIT_BRANCH"
 
@@ -61,9 +60,6 @@ jobs:
           "
 
           VERSION="$(cat package.json | jq -r '.version')"
-
-          npm run build
-          npm pack
 
           git push origin v$VERSION
           git push origin $GIT_BRANCH
