@@ -1,6 +1,6 @@
 {
   "name": "@dimitrmo/cargo-verison-action",
-  "description": "## Useful links",
+  "description": "Use cargo-verison to bump the version.",
   "version": "1.0.0",
   "main": "src/index.js",
   "devDependencies": {
@@ -11,9 +11,10 @@
     "chalk": "^5.3.0"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx ncc build src/index.js --license LICENSE"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "Apache-2.0"
 }
