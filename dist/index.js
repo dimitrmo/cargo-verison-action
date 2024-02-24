@@ -28574,12 +28574,12 @@ async function run() {
     const git_tag_version = core.getInput('git-tag-version');
     console.log(chalk.blue(`Git tag version: ${git_tag_version}`));
 
-    let params = [ "verison", version, "-m", message ];
+    let params = [ version, "-m", message ];
     if (git_tag_version === 'false' || git_tag_version === false) {
       params.push('--git-tag-version=false');
     }
   
-    const output = await exec.getExecOutput('cargo', params, { silent: true })
+    const output = await exec.getExecOutput('cargo-verison', params, { silent: true })
     const new_version = output.stdout.trim();
     core.setOutput("next_version", new_version);
 
