@@ -75,5 +75,5 @@ jobs:
         with:
           artifacts: "*.tgz"
           makeLatest: true
-          name: "Release ${{ env.VERSION }}"
+          name: Release ${{ env.VERSION }}
           tag: v${{ env.VERSION }}
