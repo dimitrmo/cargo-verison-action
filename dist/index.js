@@ -28372,7 +28372,7 @@ async function run() {
 
     // version
     const version = core.getInput('version');
-    console.log(source.blue(`Version: ${version}!`));
+    console.log(source.blue(`Version: ${version}`));
 
     // message
     const message = core.getInput('message');
@@ -28392,7 +28392,7 @@ async function run() {
     core.setOutput("next_version", new_version);
 
     console.log(source.green(`Previous version: ${prev_version}`));
-    console.log(source.green(`Next version: ${prev_version}`));
+    console.log(source.green(`Next version: ${new_version}`));
   } catch (error) {
     core.setFailed(error.message);
   }  
