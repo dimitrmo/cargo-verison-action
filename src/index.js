@@ -11,7 +11,7 @@ async function run() {
 
     // version
     const version = core.getInput('version');
-    console.log(chalk.blue(`Version: ${version}!`));
+    console.log(chalk.blue(`Version: ${version}`));
 
     // message
     const message = core.getInput('message');
@@ -31,7 +31,7 @@ async function run() {
     core.setOutput("next_version", new_version);
 
     console.log(chalk.green(`Previous version: ${prev_version}`));
-    console.log(chalk.green(`Next version: ${prev_version}`));
+    console.log(chalk.green(`Next version: ${new_version}`));
   } catch (error) {
     core.setFailed(error.message);
   }  
