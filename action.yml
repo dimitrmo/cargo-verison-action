@@ -14,7 +14,9 @@ inputs:
     required: false
     default: 'true'
 outputs:
-  new_version:
+  prev_version:
+    description: 'The version before the bump'
+  next_version:
     description: 'The new version after the bump'
 runs:
   using: 'node20'

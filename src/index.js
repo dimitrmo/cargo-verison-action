@@ -1,37 +1,37 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-// const github = require('@actions/github');
+const chalk = require('chalk');
 
 async function run() {
   try {
+    await exec.getExecOutput("cargo", ["install", "cargo-verison"]);
+    const version_output = await exec.getExecOutput("cargo", [ "verison", "current" ]);
+    const prev_version = (await version_output).stdout.trim();
+    core.setOutput("prev_version", prev_version);
+
     // version
     const version = core.getInput('version');
-    console.log(`Version: ${version}!`);
+    console.log(chalk.blue(`Version: ${version}!`));
 
     // message
     const message = core.getInput('message');
-    console.log(`Message: ${message}`);
+    console.log(chalk.blue(`Message: ${message}`));
 
     // git-tag-version
     const git_tag_version = core.getInput('git-tag-version');
-    console.log(`Git tag version: ${git_tag_version}`);
-    // const time = (new Date()).toTimeString();
-    // core.setOutput("time", time);
+    console.log(chalk.blue(`Git tag version: ${git_tag_version}`));
 
-    // // Get the JSON webhook payload for the event that triggered the workflow
-    // const payload = JSON.stringify(github.context.payload, undefined, 2)
-    // console.log(`The event payload: ${payload}`);
-  
-    let command = `cargo verison ${version} -m "${message}"`;
+    let params = [ "verison", version, "-m", message ];
     if (git_tag_version === 'false' || git_tag_version === false) {
-      command += ' --git-tag-version=false'
+      params.push('--git-tag-version=false');
     }
   
-    const output = await exec.getExecOutput('ls', ['-lah'], { silent: true })
-    let new_version = output.stdout.trim();
-    core.setOutput("new_version", new_version);
-  
-    console.log(`I will run command: ${command}`);
+    const output = await exec.getExecOutput('cargo', params, { silent: true })
+    const new_version = output.stdout.trim();
+    core.setOutput("next_version", new_version);
+
+    console.log(chalk.green(`Previous version: ${prev_version}`));
+    console.log(chalk.green(`Next version: ${prev_version}`));
   } catch (error) {
     core.setFailed(error.message);
   }  
