@@ -44,7 +44,7 @@ jobs:
           GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
           echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
 
-      - name: Release
+      - name: NPM Release
         run: |
           echo "Current branch $GIT_BRANCH"
 
@@ -65,3 +65,14 @@ jobs:
 
           git push origin v$VERSION
           git push origin $GIT_BRANCH
+
+          # this will prepare all details for next step
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          npm pack      
+
+      - name: Create github release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "*.tgz"
+          makeLatest: true
+          name: "Release $VERSION"
