@@ -28365,7 +28365,7 @@ var exec = __nccwpck_require__(1514);
 
 async function run() {
   try {
-    await exec.getExecOutput("cargo", ["install", "--locked", "cargo-verison"]);
+    await exec.getExecOutput("cargo", ["install", "--locked", "cargo-verison", "--force"]);
     const version_output = await exec.getExecOutput("cargo-verison", [ "current" ]);
     const prev_version = (await version_output).stdout.trim();
     core.setOutput("prev_version", prev_version);
