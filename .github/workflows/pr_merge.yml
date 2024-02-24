@@ -51,8 +51,10 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "github-actions@users.noreply.github.com"
 
-          git add dist
-          git commit -m "Build dist"
+          if [[ `git status --porcelain` ]]; then
+            git add dist
+            git commit -m "Build dist"
+          fi
 
           npm version patch --json -m "Release %s
 
