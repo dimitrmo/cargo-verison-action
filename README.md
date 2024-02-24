@@ -6,7 +6,7 @@ Uses [cargo-verison](https://github.com/dimitrmo/cargo-verison) to bump the vers
 
 ```yaml
   - name: Cargo Verison
-    uses: dimitrmo/cargo-verison-action@v1.0.11
+    uses: dimitrmo/cargo-verison-action@v1.0.13
 ```
 
 ## Useful links
