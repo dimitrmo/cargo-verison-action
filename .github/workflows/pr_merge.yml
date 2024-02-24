@@ -76,3 +76,4 @@ jobs:
           artifacts: "*.tgz"
           makeLatest: true
           name: "Release $VERSION"
+          tag: "$VERSION"
