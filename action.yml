@@ -21,6 +21,10 @@ inputs:
     description: 'Skip the whole installation process in case binary is already installed'
     required: false
     default: 'false'
+  skip-bump:
+    description: 'Skip the whole version bump process. This is useful for just installing the binary and not running it.'
+    required: false
+    default: 'false'
 outputs:
   prev_version:
     description: 'The version before the bump'
