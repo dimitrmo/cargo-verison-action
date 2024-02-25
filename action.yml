@@ -17,6 +17,10 @@ inputs:
     description: 'Force install binary'
     required: false
     default: 'true'
+  skip-install:
+    description: 'Skip the whole installation process in case binary is already installed'
+    required: false
+    default: 'false'
 outputs:
   prev_version:
     description: 'The version before the bump'

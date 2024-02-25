@@ -2,17 +2,25 @@ import chalk from 'chalk';
 import core from '@actions/core';
 import exec from '@actions/exec';
 
+async function install_binary() {
+  // install binary params
+  const install_params = [ "install", "--locked", "cargo-verison" ];
+  const force_install = core.getBooleanInput('force-install');
+  if (force_install) {
+    install_params.push("--force");
+  }
+
+  // run install cmd with params
+  await exec.getExecOutput("cargo", install_params);
+}
+
 async function run() {
   try {
-    // install binary params
-    const install_params = [ "install", "--locked", "cargo-verison" ];
-    const force_install = core.getBooleanInput('force-install');
-    if (force_install) {
-      install_params.push("--force");
+    const skip_install = core.getBooleanInput('skip-install');
+    if (!skip_install) {
+      await install_binary();
     }
 
-    // run install cmd with params
-    await exec.getExecOutput("cargo", install_params);
     const version_output = await exec.getExecOutput("cargo-verison", [ "current" ]);
     const prev_version = (await version_output).stdout.trim();
     core.setOutput("prev_version", prev_version);

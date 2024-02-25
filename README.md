@@ -5,8 +5,14 @@ Uses [cargo-verison](https://github.com/dimitrmo/cargo-verison) to bump the vers
 ## Usage
 
 ```yaml
-  - name: Cargo Verison
-    uses: dimitrmo/cargo-verison-action@v1.0.15
+      - name: Cargo Verison
+        id: verison
+        uses: dimitrmo/cargo-verison-action@v1.0.15
+        with:
+          message: "Release %s
+
+          [skip ci]
+          "
 ```
 
 ## Useful links
