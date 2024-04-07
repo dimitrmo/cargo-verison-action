@@ -25,6 +25,10 @@ inputs:
     description: 'Skip the whole version bump process. This is useful for just installing the binary and not running it.'
     required: false
     default: 'false'
+  workspace:
+    description: 'Whether a project is a workspace root and its version leaves in [workspace.package]'
+    required: false
+    default: 'false'
 outputs:
   prev_version:
     description: 'The version before the bump'
