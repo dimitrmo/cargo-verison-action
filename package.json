@@ -1,7 +1,7 @@
 {
   "name": "@dimitrmo/cargo-verison-action",
   "description": "Use cargo-verison to bump the version.",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "main": "src/index.js",
   "type": "module",
   "devDependencies": {
