@@ -35,5 +35,5 @@ outputs:
   next_version:
     description: 'The new version after the bump'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
